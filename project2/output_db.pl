@@ -31,7 +31,7 @@ my @example_data = ( { first_name => 'Rose',
 
 # Connect to DB
 my $dbname = defined $ARGV[0] ? $ARGV[0] : 'OP_PerlDemo';
-my $dsn = "dbi:SQLite:dbname:$dbname";
+my $dsn = "dbi:SQLite:$dbname";
 my $user = "";
 my $pass = "";
 
