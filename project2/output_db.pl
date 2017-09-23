@@ -44,7 +44,7 @@ my $dbh = DBI->connect($dsn, $user, $pass, {
 
 # Create new table with sample data if no dbname argument provided
 unless (defined $ARGV[0]) {
-  # Create table
+  # Create table `people`
   my $sql = '
   CREATE TABLE IF NOT EXISTS people (
     id INTEGER PRIMARY KEY,
@@ -55,7 +55,7 @@ unless (defined $ARGV[0]) {
 
   $dbh->do($sql);
 
-  # Insert rows
+  # Insert rows from `example_data`
   for my $person_hash (@example_data) {
     my @columns = keys %$person_hash;
     my @values = values %$person_hash;
@@ -67,18 +67,18 @@ unless (defined $ARGV[0]) {
   }
 }
 
-# Read the data 
+# Read all table data
 my $sth = $dbh->prepare("SELECT * FROM people");
 $sth->execute();
 
-# Output the data
+# Output table data
 print "All items in table `people`:\n\n";
-my $count = 1;
+my $count = 0;
 while (my $row = $sth->fetchrow_hashref) {
+  $count++;
   print "Person $count:\n";
   print "Name: $row->{first_name} $row->{last_name}\n";
   print "Home: $row->{home} \n\n";
-  $count++;
 }
 
 
