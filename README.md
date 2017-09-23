@@ -23,3 +23,6 @@ To run:
 Running without arguments will create a new SQLite database under the name `OP_PerlDemo`, insert and display the example data provided.
 
 **It may be necessary to run `chmod u+x output_db.pl`**
+
+
+#### Note: Due to Project 2 being a product of my first few hours' experience using perl, changes may be made in a separate branch as afterthoughts come along.
